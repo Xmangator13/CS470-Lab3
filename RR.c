@@ -29,11 +29,13 @@ void calculateWaitingTimeAndExecutionOrder(Process proc[], int n, int quantum) {
         for (int i = 0; i < n; i++) {
             if (proc[i].remaining_time > 0 && proc[i].arrival_time <= time) {
                 done = 0;
+                //Determine execution time for this quantum
                 int exec_time = (proc[i].remaining_time > quantum) ? quantum : proc[i].remaining_time;
                 time += exec_time;
                 proc[i].remaining_time -= exec_time;
+                //Record execution order
                 execution_order[eo_index++] = proc[i].process_id;
-
+                //If process completes, calculate turnaround and waiting times
                 if (proc[i].remaining_time == 0) {
                     proc[i].turnaround_time = time - proc[i].arrival_time;
                     proc[i].waiting_time = proc[i].turnaround_time - proc[i].burst_time;
@@ -41,7 +43,8 @@ void calculateWaitingTimeAndExecutionOrder(Process proc[], int n, int quantum) {
                 }
             }
         }
-        if (done) time++; //Idle time if no process is ready
+        //idle time if no process is ready
+        if (done) time++;
     }
 
     //Print execution order
@@ -80,4 +83,5 @@ int main() {
     return 0;
 
 }
+
 
