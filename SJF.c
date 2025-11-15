@@ -1,3 +1,7 @@
+//Xavier Santiago
+//CS470
+//11/15/2025
+//Honor Code: "I pledge that this submission is solely my work, and that I have neither given to nor received help from anyone other than the instructor or TA’s."
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -83,4 +87,5 @@ int main() {
     printProcesses(proc);
 
     return 0;
+
 }
