@@ -56,7 +56,6 @@ void calculateWaitingTimeAndExecutionOrder(Process proc[], int n, int quantum) {
 //Wrapper function for Round Robin scheduling
 void roundRobin(Process proc[], int n, int quantum) {
     calculateWaitingTimeAndExecutionOrder(proc, n, quantum);
-    calculateTurnaroundTime(proc, n);
 }
 
 //Function to print process details
@@ -81,3 +80,4 @@ int main() {
     return 0;
 
 }
+
