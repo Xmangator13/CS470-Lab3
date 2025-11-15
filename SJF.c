@@ -45,11 +45,13 @@ void srtf(Process proc[]) {
 
     //Main scheduling loop
     while (completed < n) {
+        //select process with the shortest remaining time
         int idx = findNextProcess(proc, current_time);
         if (idx != -1) {
+            //Execute one time unit
             proc[idx].remaining_time--;
             execution_order[eo_index++] = proc[idx].process_id;
-
+            //checks if process is complete then records metrics
             if (proc[idx].remaining_time == 0) {
                 proc[idx].is_completed = 1;
                 completed++;
@@ -57,6 +59,7 @@ void srtf(Process proc[]) {
                 proc[idx].waiting_time = proc[idx].turnaround_time - proc[idx].burst_time;
             }
         }
+        //Advance simulation clock
         current_time++;
     }
 
@@ -89,4 +92,5 @@ int main() {
     return 0;
 
 }
+
 
