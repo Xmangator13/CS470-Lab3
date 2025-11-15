@@ -16,9 +16,9 @@ typedef struct {
     int is_completed;
 } Process;
 
-int n; // Number of processes
+int n; //Number of processes
 
-// Function to find the index of the process with the shortest remaining time
+//Function to find the index of the process with the shortest remaining time
 int findNextProcess(Process proc[], int current_time) {
     int idx = -1;
     int min_remaining = INT_MAX;
@@ -32,18 +32,18 @@ int findNextProcess(Process proc[], int current_time) {
     return idx;
 }
 
-// Function to perform the SRTF scheduling
+//Function to perform the SRTF scheduling
 void srtf(Process proc[]) {
     int completed = 0, current_time = 0;
     int execution_order[100], eo_index = 0;
 
-    // Initialize remaining times and completion flags
+    //Initialize remaining times and completion flags
     for (int i = 0; i < n; i++) {
         proc[i].remaining_time = proc[i].burst_time;
         proc[i].is_completed = 0;
     }
 
-    // Main scheduling loop
+    //Main scheduling loop
     while (completed < n) {
         int idx = findNextProcess(proc, current_time);
         if (idx != -1) {
@@ -60,7 +60,7 @@ void srtf(Process proc[]) {
         current_time++;
     }
 
-    // Print execution order
+    //Print execution order
     printf("\nExecution Order: ");
     for (int i = 0; i < eo_index; i++) {
         printf("P%d ", execution_order[i]);
@@ -68,7 +68,7 @@ void srtf(Process proc[]) {
     printf("\n");
 }
 
-// Function to print the processes and their details
+//Function to print the processes and their details
 void printProcesses(Process proc[]) {
     printf("Process ID\tArrival Time\tBurst Time\tWaiting Time\tTurnaround Time\n");
     for (int i = 0; i < n; i++) {
@@ -79,7 +79,7 @@ void printProcesses(Process proc[]) {
 }
 
 int main() {
-    // Initialize processes with their IDs, arrival times, and burst times
+    //Initialize processes with their IDs, arrival times, and burst times
     Process proc[] = {{1, 0, 8}, {2, 1, 4}, {3, 2, 9}, {4, 3, 5}};
     n = sizeof(proc) / sizeof(proc[0]);
 
@@ -89,3 +89,4 @@ int main() {
     return 0;
 
 }
+
